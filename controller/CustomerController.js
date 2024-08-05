@@ -1,6 +1,8 @@
 let CustPreID = "C00-00";
 let cusNo = 1;
 
+let customerDetail = [];
+
 setCusID();
 
 let isUpdateMode = false;
@@ -87,6 +89,7 @@ function getAllCustomer() {
     url: "http://localhost:8080/POS_Backend/customer",
     method: "GET",
     success: function (data) {
+      customerDetail = data;
       let tbody = $("#customerTbody");
       tbody.empty();
       data.forEach((customer) => {
@@ -97,7 +100,6 @@ function getAllCustomer() {
                 <td>${customer.email}</td>
                 <td>${customer.contact}</td>
                 <td>
-                    <button class="btn btn-sm btn-warning" onclick="editCustomer('${customer.id}')">Edit</button>
                     <button class="btn btn-sm btn-danger" onclick="deleteCustomer('${customer.id}')">Delete</button>
                 </td>
             </tr>`;
@@ -270,26 +272,39 @@ function resetForm() {
 //   $("#cusID").focus();
 // }
 
+
 $("#searchCus").on("input", function () {
   filterCustomers();
 });
 
+
 function filterCustomers() {
+  // $("#customerTbody").empty();
+  // let searchValue = $("#searchCus").val().toLowerCase();
+  // let filteredCustomers = customerDetail.filter(customer => 
+  //   customer.customerID.toLowerCase().includes(searchValue) ||
+  //   customer.customerName.toLowerCase().includes(searchValue) ||
+  //   customer.customerAddress.toLowerCase().includes(searchValue) ||
+  //   customer.customerEmail.toLowerCase().includes(searchValue) ||
+  //   customer.customerContact.toLowerCase().includes(searchValue)
+  // );
+  // renderCustomerTable(filteredCustomers);
   $("#customerTbody").empty();
   let searchValue = $("#searchCus").val().toLowerCase();
+  console.log(customerDetail);
   for (let i = 0; i < customerDetail.length; i++) {
     if (
-      customerDetail[i].customerID.toLowerCase().includes(searchValue) ||
-      customerDetail[i].customerName.toLowerCase().includes(searchValue) ||
-      customerDetail[i].customerAddress.toLowerCase().includes(searchValue) ||
-      customerDetail[i].customerEmail.toLowerCase().includes(searchValue) ||
-      customerDetail[i].customerContact.toLowerCase().includes(searchValue)
+      customerDetail[i].id.toLowerCase().includes(searchValue) ||
+      customerDetail[i].name.toLowerCase().includes(searchValue) ||
+      customerDetail[i].address.toLowerCase().includes(searchValue) ||
+      customerDetail[i].email.toLowerCase().includes(searchValue) ||
+      customerDetail[i].contact.toLowerCase().includes(searchValue)
     ) {
-      let id = customerDetail[i].customerID;
-      let name = customerDetail[i].customerName;
-      let address = customerDetail[i].customerAddress;
-      let email = customerDetail[i].customerEmail;
-      let contact = customerDetail[i].customerContact;
+      let id = customerDetail[i].id;
+      let name = customerDetail[i].name;
+      let address = customerDetail[i].address;
+      let email = customerDetail[i].email;
+      let contact = customerDetail[i].contact;
 
       let row = `<tr>
                         <td>${id}</td>
@@ -304,4 +319,20 @@ function filterCustomers() {
       bindCustomerTrEvents();
     }
   }
+}
+
+function renderCustomerTable(customers) {
+  $("#customerTbody").empty();
+  customers.forEach(customer => {
+    let row = `<tr>
+                <td>${customer.customerID}</td>
+                <td>${customer.customerName}</td>
+                <td>${customer.customerAddress}</td>
+                <td>${customer.customerEmail}</td>
+                <td>${customer.customerContact}</td>
+                <td><button class="delete-btn bg-danger text-white border rounded" onclick="deleteCustomer('${customer.customerID}', this)">Delete</button></td>
+              </tr>`;
+    $("#customerTbody").append(row);
+  });
+  bindCustomerTrEvents();
 }
