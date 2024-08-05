@@ -1,7 +1,7 @@
-// let CustPreID = "C00-00";
-// let cusNo = 4;
+let CustPreID = "C00-00";
+let cusNo = 1;
 
-// setCusID();
+setCusID();
 
 let isUpdateMode = false;
 let selectedCustomerId = null;
@@ -26,17 +26,29 @@ getAllCustomer();
 // });
 
 function saveCustomer() {
-  let formData = $("#customerForm").serialize();
+  let customer = {
+    id: $("#cusID").val(),
+    name: $("#cusName").val(),
+    address: $("#cusAddress").val(),
+    email: $("#cusEmail").val(),
+    contact: $("#cusContact").val(),
+  };
+
   $.ajax({
     url: "http://localhost:8080/POS_Backend/customer",
-    method: "post",
-    data: formData,
-    success: function (res) {
+    method: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(customer),
+    success: function () {
+      alert("Customer saved successfully");
       getAllCustomer();
-      alert(res.massage);
+      resetForm();
+      cusNo++;
+      setCusID();
     },
     error: function (err) {
-      alert(e.responseJSON.massage);
+      console.error(err);
+      alert("Failed to save customer");
     },
   });
   //   let cusID = $("#cusID").val();
@@ -71,30 +83,31 @@ function saveCustomer() {
 }
 
 function getAllCustomer() {
-  $("#customerTbody").empty();
-
   $.ajax({
     url: "http://localhost:8080/POS_Backend/customer",
-    method: "get",
-    success: function (customer) {
-      for (let i in customer) {
-        let cus = customer[i];
-        let id = cus.id;
-        let name = cus.name;
-        let address = cus.address;
-        let email = cus.email;
-        let contact = cus.contact;
+    method: "GET",
+    success: function (data) {
+      let tbody = $("#customerTbody");
+      tbody.empty();
+      data.forEach((customer) => {
         let row = `<tr>
-                    <td>${id}</td>
-                    <td>${name}</td>
-                    <td>${address}</td>
-                    <td>${email}</td>
-                    <td>${contact}</td>
-                    <td><button class="delete-btn bg-danger text-white border rounded" onclick="deleteCustomer('${id}', this)">Delete</button></td>
-                </tr>`;
-        $("#tblcustomer").append(row);
+                <td>${customer.id}</td>
+                <td>${customer.name}</td>
+                <td>${customer.address}</td>
+                <td>${customer.email}</td>
+                <td>${customer.contact}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning" onclick="editCustomer('${customer.id}')">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteCustomer('${customer.id}')">Delete</button>
+                </td>
+            </tr>`;
+        tbody.append(row);
         bindCustomerTrEvents();
-      }
+      });
+    },
+    error: function (err) {
+      console.error(err);
+      alert("Failed to load customers");
     },
   });
   //   for (let i = 0; i < customerDetail.length; i++) {
@@ -141,69 +154,121 @@ function bindCustomerTrEvents() {
 }
 
 function updateCustomer() {
-  let cusID = $("#cusID").val();
-  let cusName = $("#cusName").val();
-  let cusAddress = $("#cusAddress").val();
-  let cusEmail = $("#cusEmail").val();
-  let cusContact = $("#cusContact").val();
+  let customer = {
+    id: $("#cusID").val(),
+    name: $("#cusName").val(),
+    address: $("#cusAddress").val(),
+    email: $("#cusEmail").val(),
+    contact: $("#cusContact").val(),
+  };
 
-  let consent = confirm("DO U WANT UPDATE THIS CUSTOMER");
+  $.ajax({
+    url: "http://localhost:8080/POS_Backend/customer",
+    method: "PUT",
+    contentType: "application/json",
+    data: JSON.stringify(customer),
+    success: function () {
+      alert("Customer updated successfully");
+      getAllCustomer();
+      resetForm();
+      isUpdateMode = false;
+      selectedCustomerId = null;
+      $("#onActionSave")
+        .text("REGISTER CUSTOMER")
+        .removeClass("update")
+        .addClass("save");
+    },
+    error: function (err) {
+      console.error(err);
+      alert("Failed to update customer");
+    },
+  });
+  // let cusID = $("#cusID").val();
+  // let cusName = $("#cusName").val();
+  // let cusAddress = $("#cusAddress").val();
+  // let cusEmail = $("#cusEmail").val();
+  // let cusContact = $("#cusContact").val();
 
-  if (consent) {
-    for (let i = 0; i < customerDetail.length; i++) {
-      if (customerDetail[i].customerID == selectedCustomerId) {
-        customerDetail[i].customerID = cusID;
-        customerDetail[i].customerName = cusName;
-        customerDetail[i].customerAddress = cusAddress;
-        customerDetail[i].customerEmail = cusEmail;
-        customerDetail[i].customerContact = cusContact;
+  // let consent = confirm("DO U WANT UPDATE THIS CUSTOMER");
 
-        getAllCustomer();
-        clearCustomerFeilds();
-        alert("UPDATED SUCCSESS...!");
+  // if (consent) {
+  //   for (let i = 0; i < customerDetail.length; i++) {
+  //     if (customerDetail[i].customerID == selectedCustomerId) {
+  //       customerDetail[i].customerID = cusID;
+  //       customerDetail[i].customerName = cusName;
+  //       customerDetail[i].customerAddress = cusAddress;
+  //       customerDetail[i].customerEmail = cusEmail;
+  //       customerDetail[i].customerContact = cusContact;
 
-        break;
-      }
-    }
-    isUpdateMode = false;
-    selectedCustomerId = null;
-    $("#onActionSave")
-      .text("REGISTER CUSTOMER")
-      .removeClass("update")
-      .addClass("save");
-  } else {
-    clearCustomerFeilds();
-  }
+  //       getAllCustomer();
+  //       clearCustomerFeilds();
+  //       alert("UPDATED SUCCSESS...!");
+
+  //       break;
+  //     }
+  //   }
+  //   isUpdateMode = false;
+  //   selectedCustomerId = null;
+  //   $("#onActionSave")
+  //     .text("REGISTER CUSTOMER")
+  //     .removeClass("update")
+  //     .addClass("save");
+  // } else {
+  //   clearCustomerFeilds();
+  // }
   setCusID();
-  cusNames();
+  // cusNames();
 }
 
-function deleteCustomer(customerID, button) {
-  let consent = confirm("DO U WANT DELETE THIS CUSTOMER");
-
-  if (consent) {
-    for (let i = 0; i < customerDetail.length; i++) {
-      if (customerDetail[i].customerID == customerID) {
-        customerDetail.splice(i, 1);
+function deleteCustomer(id) {
+  $.ajax({
+    url: `http://localhost:8080/POS_Backend/customer?id=${id}`,
+    method: 'DELETE',
+    success: function() {
+        alert('Customer deleted successfully');
         getAllCustomer();
-        clearCustomerFeilds();
-
-        alert("DELETED SUCCSESS...!");
-        break;
-      }
+        resetForm();
+    },
+    error: function(err) {
+        console.error(err);
+        alert('Failed to delete customer');
     }
-  } else {
-    clearCustomerFeilds();
-  }
+});
+  // let consent = confirm("DO U WANT DELETE THIS CUSTOMER");
+
+  // if (consent) {
+  //   for (let i = 0; i < customerDetail.length; i++) {
+  //     if (customerDetail[i].customerID == customerID) {
+  //       customerDetail.splice(i, 1);
+  //       getAllCustomer();
+  //       clearCustomerFeilds();
+
+  //       alert("DELETED SUCCSESS...!");
+  //       break;
+  //     }
+  //   }
+  // } else {
+  //   clearCustomerFeilds();
+  // }
 
   setCusID();
   // cusNames()
 }
 
-function clearCustomerFeilds() {
-  $("#cusID,#cusName,#cusAddress,#cusEmail,#cusContact").val("");
-  $("#cusID").focus();
+function resetForm() {
+  $('#cusID').val('');
+  $('#cusName').val('');
+  $('#cusAddress').val('');
+  $('#cusEmail').val('');
+  $('#cusContact').val('');
+  $('#onActionSave').text('REGISTER CUSTOMER');
+  $('#onActionSave').off('click').on('click', saveCustomer);
 }
+
+// function clearCustomerFeilds() {
+//   $("#cusID,#cusName,#cusAddress,#cusEmail,#cusContact").val("");
+//   $("#cusID").focus();
+// }
 
 $("#searchCus").on("input", function () {
   filterCustomers();
