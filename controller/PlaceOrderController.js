@@ -95,7 +95,7 @@ $("#btnAddToCart").click(function () {
 function addToCart() {
 
     let item = {
-        itemID: $("#selectedItemCode").val(),
+        itemId: $("#selectedItemCode").val(),
         itemName: $("#selectedItemName").val(),
         itemDescription: $("#selectedItemDes").val(),
         unitPrice: $("#selectedItemUP").val(),
@@ -158,20 +158,20 @@ function renderCartTable() {
     $("#tBodyPlaceOrder").empty();
     orderDetails.forEach(item => {
         let row = `<tr>
-                    <td>${item.itemID}</td>
+                    <td>${item.itemId}</td>
                     <td>${item.itemName}</td>
                     <td>${item.itemDescription}</td>
                     <td>${item.unitPrice}</td>
                     <td>${item.qty}</td>
                     <td>${item.total}</td>
-                    <td><button class="delete-btn bg-danger text-white border rounded" onclick="removeFromCart('${item.itemID}')">Delete</button></td>
+                    <td><button class="delete-btn bg-danger text-white border rounded" onclick="removeFromCart('${item.itemId}')">Delete</button></td>
                    </tr>`;
         $("#tBodyPlaceOrder").append(row);
     });
 }
 
-window.removeFromCart = function(itemID) {
-    orderDetails = orderDetails.filter(item => item.itemID !== itemID);
+window.removeFromCart = function(itemId) {
+    orderDetails = orderDetails.filter(item => item.itemId !== itemId);
     renderCartTable();
 };
 
@@ -191,10 +191,10 @@ $('#btnPurchase').click(function () {
 
 function purchaseOrder() {
     let orderData = {
-        orderID: $("#InputOID").val(),
-        orderDate: $("#InputDate").val(),
-        orderTotal: $("#inputTotal").val(),
-        customerID: $("#selectedCusID").val(),
+        oId: $("#InputOID").val(),
+        date: $("#InputDate").val(),
+        total: $("#inputTotal").val(),
+        customerId: $("#selectedCusID").val(),
         orderDetails: orderDetails
     };
 
