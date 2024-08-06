@@ -272,5 +272,6 @@ function clearItemDetails() {
     $("#filterInputItemName").val("");
 }
 
-
-
+function getOrderDetails(){
+    
+}
