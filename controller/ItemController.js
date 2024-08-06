@@ -88,19 +88,19 @@ function getAllItem() {
           itemDetail = data;
           let tbody = $("#itemTbody");
           tbody.empty();
-          data.forEach((customer) => {
+          data.forEach((item) => {
             let row = `<tr>
-                    <td>${customer.id}</td>
-                    <td>${customer.name}</td>
-                    <td>${customer.address}</td>
-                    <td>${customer.email}</td>
+                    <td>${item.id}</td>
+                    <td>${item.name}</td>
+                    <td>${item.description}</td>
+                    <td>${item.uPrice}</td>
                     <td>${customer.contact}</td>
                     <td>
-                        <button class="btn btn-sm btn-danger" onclick="deleteCustomer('${customer.id}')">Delete</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteItem('${item.id}')">Delete</button>
                     </td>
                 </tr>`;
             tbody.append(row);
-            bindCustomerTrEvents();
+            bindItemTrEvents();
           });
         },
         error: function (err) {
