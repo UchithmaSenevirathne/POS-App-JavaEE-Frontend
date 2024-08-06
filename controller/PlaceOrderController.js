@@ -277,5 +277,9 @@ function getOrderDetails(){
         url: 'http://localhost:8080/POS_Backend/placeOrder',
         type: 'GET',
         contentType: 'application/json',
+        success: function(response) {
+            console.log("Orders fetched successfully: ", response);
+            populateOrderTable(response);
+        },
     })
 }
