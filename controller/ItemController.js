@@ -79,6 +79,33 @@ function saveItem() {
 }
 
 function getAllItem() {
+    $.ajax({
+        url: "http://localhost:8080/POS_Backend/item",
+        method: "GET",
+        success: function (data) {
+          customerDetail = data;
+          let tbody = $("#customerTbody");
+          tbody.empty();
+          data.forEach((customer) => {
+            let row = `<tr>
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.address}</td>
+                    <td>${customer.email}</td>
+                    <td>${customer.contact}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="deleteCustomer('${customer.id}')">Delete</button>
+                    </td>
+                </tr>`;
+            tbody.append(row);
+            bindCustomerTrEvents();
+          });
+        },
+        error: function (err) {
+          console.error(err);
+          alert("Failed to load customers");
+        },
+      });
     // $('#itemTbody').empty();
     // for (let i = 0; i < itemDetails.length; i++) {
     //     let id = itemDetails[i].itemID;
