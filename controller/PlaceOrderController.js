@@ -1,6 +1,8 @@
 let OrderPreID="O00-00";
 let orderNo=1;
 
+let orderDetails = [];
+
 // cusNames();
 // itemNames();
 setOrderId();
