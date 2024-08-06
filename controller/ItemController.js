@@ -150,6 +150,35 @@ function bindItemTrEvents() {
 
 function updateItem() {
 
+    let item = {
+        id: $("#itemID").val(),
+        name: $("#itemName").val(),
+        description: $("#description").val(),
+        uPrice: $("#uPrice").val(),
+      };
+    
+      $.ajax({
+        url: "http://localhost:8080/POS_Backend/customer",
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(customer),
+        success: function () {
+          alert("Customer updated successfully");
+          getAllCustomer();
+          resetForm();
+          isUpdateMode = false;
+          selectedCustomerId = null;
+          $("#onActionSave")
+            .text("REGISTER CUSTOMER")
+            .removeClass("update")
+            .addClass("save");
+        },
+        error: function (err) {
+          console.error(err);
+          alert("Failed to update customer");
+        },
+      });
+
     // let iId=$('#itemID').val();
     // let name=$('#itemName').val();
     // let description=$('#description').val();
