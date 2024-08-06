@@ -79,24 +79,24 @@ function saveItem() {
 }
 
 function getAllItem() {
-    $('#itemTbody').empty();
-    for (let i = 0; i < itemDetails.length; i++) {
-        let id = itemDetails[i].itemID;
-        let name = itemDetails[i].itemName;
-        let desc = itemDetails[i].itemDescription;
-        let up = itemDetails[i].itemUnitPrice;
+    // $('#itemTbody').empty();
+    // for (let i = 0; i < itemDetails.length; i++) {
+    //     let id = itemDetails[i].itemID;
+    //     let name = itemDetails[i].itemName;
+    //     let desc = itemDetails[i].itemDescription;
+    //     let up = itemDetails[i].itemUnitPrice;
 
-        let itemRow = `<tr>
-                    <td>${id}</td>
-                    <td>${name}</td>
-                    <td>${desc}</td>
-                    <td>${up}</td>
-                    <td><button class="delete-btn bg-danger text-white border rounded" onclick="deleteItem('${id}', this)">Delete</button></td>
-                </tr>`
+    //     let itemRow = `<tr>
+    //                 <td>${id}</td>
+    //                 <td>${name}</td>
+    //                 <td>${desc}</td>
+    //                 <td>${up}</td>
+    //                 <td><button class="delete-btn bg-danger text-white border rounded" onclick="deleteItem('${id}', this)">Delete</button></td>
+    //             </tr>`
 
-        $('#tblItem').append(itemRow);
-        bindItemTrEvents();
-    }
+    //     $('#tblItem').append(itemRow);
+    //     bindItemTrEvents();
+    // }
 }
 
 function bindItemTrEvents() {
