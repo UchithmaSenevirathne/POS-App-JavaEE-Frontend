@@ -79,7 +79,7 @@ $('#filterInputCusName').change(function () {
 
 $('#filterInputItemName').change(function () {
     for (let i = 0; i < items.length; i++) {
-        if ($(this).val()==items[i].itemName){
+        if ($(this).val()==items[i].name){
             $('#selectedItemCode').val(items[i].id);
             $('#selectedItemName').val(items[i].name);
             $('#selectedItemDes').val(items[i].description);
