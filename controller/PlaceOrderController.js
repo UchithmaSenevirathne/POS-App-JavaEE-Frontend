@@ -275,5 +275,7 @@ function clearItemDetails() {
 function getOrderDetails(){
     $.ajax({
         url: 'http://localhost:8080/POS_Backend/placeOrder',
+        type: 'GET',
+        
     })
 }
