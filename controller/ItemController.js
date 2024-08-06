@@ -26,6 +26,30 @@ getAllItem();
 // });
 
 function saveItem() {
+    let item = {
+        id: $("#itemID").val(),
+        name: $("#itemName").val(),
+        description: $("#description").val(),
+        uPrice: $("#uPrice").val(),
+      };
+    
+      $.ajax({
+        url: "http://localhost:8080/POS_Backend/customer",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(customer),
+        success: function () {
+          alert("Customer saved successfully");
+          getAllCustomer();
+          resetForm();
+          cusNo++;
+          setCusID();
+        },
+        error: function (err) {
+          console.error(err);
+          alert("Failed to save customer");
+        },
+      });
     // let iId=$('#itemID').val();
     // let name=$('#itemName').val();
     // let description=$('#description').val();
