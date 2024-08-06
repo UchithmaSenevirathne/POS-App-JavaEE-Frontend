@@ -155,33 +155,33 @@ $('#btnPurchase').click(function () {
 });
 
 function purchaseOrder() {
-    let IdOfOrder = $('#InputOID').val();
-    let cusIDOfOrder=$('#selectedCusID').val();
-    let cusNameOfOrder=$('#selectedCusName').val();
-    let dateOfOrder=$('#InputDate').val();
-    let cartDetails=orderDetailDb;
-    let subTotal = $('#inputTotal').val();
+    // let IdOfOrder = $('#InputOID').val();
+    // let cusIDOfOrder=$('#selectedCusID').val();
+    // let cusNameOfOrder=$('#selectedCusName').val();
+    // let dateOfOrder=$('#InputDate').val();
+    // let cartDetails=orderDetailDb;
+    // let subTotal = $('#inputTotal').val();
 
-    let newOrder=Object.assign({},orderOb);
-    newOrder.id=IdOfOrder;
-    newOrder.customerId=cusIDOfOrder;
-    newOrder.customerName=cusNameOfOrder;
-    newOrder.date=dateOfOrder;
-    newOrder.cartDetail=cartDetails;
-    newOrder.total=subTotal;
+    // let newOrder=Object.assign({},orderOb);
+    // newOrder.id=IdOfOrder;
+    // newOrder.customerId=cusIDOfOrder;
+    // newOrder.customerName=cusNameOfOrder;
+    // newOrder.date=dateOfOrder;
+    // newOrder.cartDetail=cartDetails;
+    // newOrder.total=subTotal;
 
-    orderDb.push(newOrder);
+    // orderDb.push(newOrder);
 
 
-    orderNo++;
-    setOrderId();
-    console.log(orderNo);
+    // orderNo++;
+    // setOrderId();
+    // console.log(orderNo);
 
-    orderDetailDb=[];
-    alert("order Placed Succesfully !");
-    console.log(orderDb);
-    clearFields();
-    getAllOrder();
+    // orderDetailDb=[];
+    // alert("order Placed Succesfully !");
+    // console.log(orderDb);
+    // clearFields();
+    // getAllOrder();
 }
 
 function clearFields() {
