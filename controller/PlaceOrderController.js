@@ -193,9 +193,12 @@ function purchaseOrder() {
     let orderData = {
         orderID: $("#InputOID").val(),
         orderDate: $("#InputDate").val(),
+        orderTotal: $("#inputTotal").val(),
         customerID: $("#selectedCusID").val(),
         orderDetails: orderDetails
     };
+
+    console.log("Order Data: ", orderData); // Log the data being sent
 
     $.ajax({
         url: 'http://localhost:8080/POS_Backend/placeOrder',
