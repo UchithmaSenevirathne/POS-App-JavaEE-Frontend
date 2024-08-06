@@ -158,7 +158,7 @@ function updateItem() {
       };
     
       $.ajax({
-        url: "http://localhost:8080/POS_Backend/customer",
+        url: "http://localhost:8080/POS_Backend/item",
         method: "PUT",
         contentType: "application/json",
         data: JSON.stringify(customer),
