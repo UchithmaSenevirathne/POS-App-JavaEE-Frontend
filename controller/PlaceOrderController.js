@@ -296,11 +296,11 @@ function populateOrderTable(orders){
         order.orderDetails.forEach(detail => {
             const row = `
                 <tr>
-                    <td>${detail.itemID}</td>
-                    <td>${detail.itemName}</td>
-                    <td>${detail.itemDescription}</td>
-                    <td>${detail.qty}</td>
-                    <td>${detail.unitPrice}</td>
+                    <td>${detail.item_id}</td>
+                    <td>${detail.item_name}</td>
+                    <td>${detail.item_desc}</td>
+                    <td>${detail.item_qty}</td>
+                    <td>${detail.item_up}</td>
                     <td>${detail.total}</td>
                 </tr>
             `;
