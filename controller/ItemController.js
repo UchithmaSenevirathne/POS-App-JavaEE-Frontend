@@ -85,8 +85,8 @@ function getAllItem() {
         url: "http://localhost:8080/POS_Backend/item",
         method: "GET",
         success: function (data) {
-          customerDetail = data;
-          let tbody = $("#customerTbody");
+          itemDetail = data;
+          let tbody = $("#itemTbody");
           tbody.empty();
           data.forEach((customer) => {
             let row = `<tr>
