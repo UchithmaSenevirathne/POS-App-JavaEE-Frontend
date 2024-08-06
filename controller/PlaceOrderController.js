@@ -299,8 +299,8 @@ function populateOrderTable(orders){
                     <td>${detail.itemID}</td>
                     <td>${detail.itemName}</td>
                     <td>${detail.itemDescription}</td>
-                    <td>${detail.unitPrice}</td>
                     <td>${detail.qty}</td>
+                    <td>${detail.unitPrice}</td>
                     <td>${detail.total}</td>
                 </tr>
             `;
