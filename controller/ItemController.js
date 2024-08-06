@@ -161,21 +161,21 @@ function updateItem() {
         url: "http://localhost:8080/POS_Backend/item",
         method: "PUT",
         contentType: "application/json",
-        data: JSON.stringify(customer),
+        data: JSON.stringify(item),
         success: function () {
-          alert("Customer updated successfully");
-          getAllCustomer();
+          alert("Item updated successfully");
+          getAllItem();
           resetForm();
           isUpdateMode = false;
-          selectedCustomerId = null;
+          selectedItemId = null;
           $("#onActionSave")
-            .text("REGISTER CUSTOMER")
+            .text("ADD ITEM")
             .removeClass("update")
             .addClass("save");
         },
         error: function (err) {
           console.error(err);
-          alert("Failed to update customer");
+          alert("Failed to update item");
         },
       });
 
