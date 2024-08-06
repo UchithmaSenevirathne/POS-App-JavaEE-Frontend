@@ -20,8 +20,8 @@ function cusNames() {
 function itemNames() {
 
     var optionItem = '';
-    for (var i = 0; i < itemDetails.length; i++) {
-        optionItem += '<option value="' + itemDetails[i].itemName + '">' + itemDetails[i].itemName + '</option>';
+    for (var i = 0; i < itemDetail.length; i++) {
+        optionItem += '<option value="' + itemDetail[i].name + '">' + itemDetail[i].name + '</option>';
     }
     $('#cmbItemNames').append(optionItem);
     $('filterInputItemName').val($('#cmbItemNames').val);
@@ -43,12 +43,12 @@ $('#filterInputCusName').change(function () {
 });
 
 $('#filterInputItemName').change(function () {
-    for (let i = 0; i < itemDetails.length; i++) {
-        if ($(this).val()==itemDetails[i].itemName){
-            $('#selectedItemCode').val(itemDetails[i].itemID);
-            $('#selectedItemName').val(itemDetails[i].itemName);
-            $('#selectedItemDes').val(itemDetails[i].itemDescription);
-            $('#selectedItemUP').val(itemDetails[i].itemUnitPrice);
+    for (let i = 0; i < itemDetail.length; i++) {
+        if ($(this).val()==itemDetail[i].itemName){
+            $('#selectedItemCode').val(itemDetail[i].itemID);
+            $('#selectedItemName').val(itemDetail[i].itemName);
+            $('#selectedItemDes').val(itemDetail[i].itemDescription);
+            $('#selectedItemUP').val(itemDetail[i].itemUnitPrice);
             break;
         }
     }
