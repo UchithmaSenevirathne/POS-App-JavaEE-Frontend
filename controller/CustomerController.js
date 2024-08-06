@@ -150,8 +150,8 @@ function bindCustomerTrEvents() {
     isUpdateMode = true;
     $("#onActionSave")
       .text("UPDATE CUSTOMER")
-      .removeClass("save")
-      .addClass("update");
+      .removeClass("saveCus")
+      .addClass("updateCus");
   });
 }
 
@@ -177,8 +177,8 @@ function updateCustomer() {
       selectedCustomerId = null;
       $("#onActionSave")
         .text("REGISTER CUSTOMER")
-        .removeClass("update")
-        .addClass("save");
+        .removeClass("updateCus")
+        .addClass("saveCus");
     },
     error: function (err) {
       console.error(err);

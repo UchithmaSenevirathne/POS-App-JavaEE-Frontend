@@ -28,13 +28,25 @@
 }
 
 
-.save {
+.saveCus {
     background-color: #1cdd46 !important;
     color: white !important;
     border-radius: 10px !important;
 }
 
-.update {
+.saveItem {
+    background-color: #1cdd46 !important;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+.updateCus {
+    background-color: #fdad00 !important;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+.updateItem {
     background-color: #fdad00 !important;
     color: white !important;
     border-radius: 10px !important;
