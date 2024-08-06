@@ -7,6 +7,7 @@ let items = [];
 
 getCustomers();
 getItems();
+getOrderDetails();
 
 // cusNames();
 // itemNames();
@@ -270,4 +271,6 @@ function clearItemDetails() {
     $("#selectedQty").val("");
     $("#filterInputItemName").val("");
 }
+
+
 
