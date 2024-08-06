@@ -287,3 +287,7 @@ function getOrderDetails(){
         }
     })
 }
+
+function populateOrderTable(orders){
+    
+}
