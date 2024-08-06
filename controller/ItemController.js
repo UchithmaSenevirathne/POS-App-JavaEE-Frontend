@@ -34,20 +34,20 @@ function saveItem() {
       };
     
       $.ajax({
-        url: "http://localhost:8080/POS_Backend/customer",
+        url: "http://localhost:8080/POS_Backend/item",
         method: "POST",
         contentType: "application/json",
-        data: JSON.stringify(customer),
+        data: JSON.stringify(item),
         success: function () {
-          alert("Customer saved successfully");
-          getAllCustomer();
+          alert("Item saved successfully");
+          getAllItem();
           resetForm();
-          cusNo++;
-          setCusID();
+          itNo++;
+          setItemID();
         },
         error: function (err) {
           console.error(err);
-          alert("Failed to save customer");
+          alert("Failed to save item");
         },
       });
     // let iId=$('#itemID').val();
