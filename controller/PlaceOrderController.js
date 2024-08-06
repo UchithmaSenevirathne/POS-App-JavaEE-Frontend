@@ -289,5 +289,6 @@ function getOrderDetails(){
 }
 
 function populateOrderTable(orders){
-    
+    const $tableBody = $('#tblBodyOrders');
+    $tableBody.empty(); // Clear the table body
 }
