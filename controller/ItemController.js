@@ -105,7 +105,7 @@ function getAllItem() {
         },
         error: function (err) {
           console.error(err);
-          alert("Failed to load customers");
+          alert("Failed to load item");
         },
       });
     // $('#itemTbody').empty();
@@ -150,36 +150,36 @@ function bindItemTrEvents() {
 
 function updateItem() {
 
-    let iId=$('#itemID').val();
-    let name=$('#itemName').val();
-    let description=$('#description').val();
-    let unitPrice=$('#uPrice').val();
+    // let iId=$('#itemID').val();
+    // let name=$('#itemName').val();
+    // let description=$('#description').val();
+    // let unitPrice=$('#uPrice').val();
 
-    let itemConsent=confirm("DO YOU WANT UPDATE THIS ITEM");
+    // let itemConsent=confirm("DO YOU WANT UPDATE THIS ITEM");
 
-    if (itemConsent){
-        for (let i = 0; i < itemDetails.length; i++) {
-            if (itemDetails[i].itemID == selectedItemId){
-                itemDetails[i].itemID=iId;
-                itemDetails[i].itemName=name;
-                itemDetails[i].itemDescription=description;
-                itemDetails[i].itemUnitPrice=unitPrice;
+    // if (itemConsent){
+    //     for (let i = 0; i < itemDetails.length; i++) {
+    //         if (itemDetails[i].itemID == selectedItemId){
+    //             itemDetails[i].itemID=iId;
+    //             itemDetails[i].itemName=name;
+    //             itemDetails[i].itemDescription=description;
+    //             itemDetails[i].itemUnitPrice=unitPrice;
                 
-                getAllItem();
-                clearItemFeilds();
-                alert("ITEM UPDATED SUCCSESS");
-                break;
-            }
-        }
-        isUpdateModeItem = false;
-        selectedItemId = null;
-        $('#onActionSaveItem').text('ADD ITEM').removeClass('update').addClass('save');
+    //             getAllItem();
+    //             clearItemFeilds();
+    //             alert("ITEM UPDATED SUCCSESS");
+    //             break;
+    //         }
+    //     }
+    //     isUpdateModeItem = false;
+    //     selectedItemId = null;
+    //     $('#onActionSaveItem').text('ADD ITEM').removeClass('update').addClass('save');
 
-    }else {
-        clearItemFeilds();
-    }
+    // }else {
+    //     clearItemFeilds();
+    // }
 
-    setItemID();
+    // setItemID();
 
 }
 
