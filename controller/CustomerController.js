@@ -44,7 +44,7 @@ function saveCustomer() {
     success: function () {
       alert("Customer saved successfully");
       getAllCustomer();
-      resetForm();
+      resetCusForm();
       cusNo++;
       setCusID();
     },
@@ -172,7 +172,7 @@ function updateCustomer() {
     success: function () {
       alert("Customer updated successfully");
       getAllCustomer();
-      resetForm();
+      resetCusForm();
       isUpdateMode = false;
       selectedCustomerId = null;
       $("#onActionSave")
@@ -229,7 +229,7 @@ function deleteCustomer(id) {
     success: function() {
         alert('Customer deleted successfully');
         getAllCustomer();
-        resetForm();
+        resetCusForm();
     },
     error: function(err) {
         console.error(err);
@@ -257,7 +257,7 @@ function deleteCustomer(id) {
   // cusNames()
 }
 
-function resetForm() {
+function resetCusForm() {
   $('#cusID').val('');
   $('#cusName').val('');
   $('#cusAddress').val('');

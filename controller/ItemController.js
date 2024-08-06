@@ -32,7 +32,7 @@ function saveItem() {
         id: $("#itemID").val(),
         name: $("#itemName").val(),
         description: $("#description").val(),
-        uPrice: $("#uPrice").val(),
+        unit_price: $("#uPrice").val(),
       };
     
       $.ajax({
@@ -43,7 +43,7 @@ function saveItem() {
         success: function () {
           alert("Item saved successfully");
           getAllItem();
-          resetForm();
+          resetItemForm();
           itNo++;
           setItemID();
         },
@@ -93,8 +93,7 @@ function getAllItem() {
                     <td>${item.id}</td>
                     <td>${item.name}</td>
                     <td>${item.description}</td>
-                    <td>${item.uPrice}</td>
-                    <td>${customer.contact}</td>
+                    <td>${item.unit_price}</td>
                     <td>
                         <button class="btn btn-sm btn-danger" onclick="deleteItem('${item.id}')">Delete</button>
                     </td>
@@ -154,7 +153,7 @@ function updateItem() {
         id: $("#itemID").val(),
         name: $("#itemName").val(),
         description: $("#description").val(),
-        uPrice: $("#uPrice").val(),
+        unit_price: $("#uPrice").val(),
       };
     
       $.ajax({
@@ -165,10 +164,10 @@ function updateItem() {
         success: function () {
           alert("Item updated successfully");
           getAllItem();
-          resetForm();
-          isUpdateMode = false;
+          resetItemForm();
+          isUpdateModeItem = false;
           selectedItemId = null;
-          $("#onActionSave")
+          $("#onActionSaveItem")
             .text("ADD ITEM")
             .removeClass("update")
             .addClass("save");
@@ -219,7 +218,7 @@ function deleteItem(id) {
         success: function() {
             alert('Item deleted successfully');
             getAllItem();
-            resetForm();
+            resetItemForm();
         },
         error: function(err) {
             console.error(err);
@@ -247,10 +246,19 @@ function deleteItem(id) {
     
 }
 
-function clearItemFeilds() {
-    $("#itemID,#itemName,#description,#uPrice").val("");
-    $('#itemID').focus();
-}
+// function clearItemFeilds() {
+//     $("#itemID,#itemName,#description,#uPrice").val("");
+//     $('#itemID').focus();
+// }
+
+function resetItemForm() {
+    $('#itemID').val('');
+    $('#itemName').val('');
+    $('#description').val('');
+    $('#uPrice').val('');
+    $('#onActionSaveItem').text('ADD ITEM');
+    $('#onActionSaveItem').off('click').on('click', saveItem);
+  }
 
 $('#searchItem').on('input', function () {
     filterItems();
@@ -259,15 +267,15 @@ $('#searchItem').on('input', function () {
 function filterItems() {
     $('#itemTbody').empty();
     let searchValue = $('#searchItem').val().toLowerCase();
-    for (let i = 0; i < itemDetails.length; i++) {
-        if (itemDetails[i].itemID.toLowerCase().includes(searchValue) ||
-            itemDetails[i].itemName.toLowerCase().includes(searchValue) ||
-            itemDetails[i].itemDescription.toLowerCase().includes(searchValue) ) {
+    for (let i = 0; i < itemDetail.length; i++) {
+        if (itemDetail[i].itemID.toLowerCase().includes(searchValue) ||
+            itemDetail[i].itemName.toLowerCase().includes(searchValue) ||
+            itemDetail[i].itemDescription.toLowerCase().includes(searchValue) ) {
 
-                let id=itemDetails[i].itemID;
-                let name=itemDetails[i].itemName;
-                let desc=itemDetails[i].itemDescription;
-                let up=itemDetails[i].itemUnitPrice;
+                let id=itemDetail[i].itemID;
+                let name=itemDetail[i].itemName;
+                let desc=itemDetail[i].itemDescription;
+                let up=itemDetail[i].itemUnitPrice;
 
             let row=`<tr>
                         <td>${id}</td>
