@@ -119,6 +119,22 @@ function addToCart() {
 
 }
 
+function renderCartTable() {
+    $("#tBodyPlaceOrder").empty();
+    orderDetails.forEach(item => {
+        let row = `<tr>
+                    <td>${item.itemID}</td>
+                    <td>${item.itemName}</td>
+                    <td>${item.itemDescription}</td>
+                    <td>${item.unitPrice}</td>
+                    <td>${item.qty}</td>
+                    <td>${item.total}</td>
+                    <td><button class="delete-btn bg-danger text-white border rounded" onclick="removeFromCart('${item.itemID}')">Delete</button></td>
+                   </tr>`;
+        $("#tBodyPlaceOrder").append(row);
+    });
+}
+
 $('#inputCash').keydown(function (event){
 
     if (event.key==='Enter'){
