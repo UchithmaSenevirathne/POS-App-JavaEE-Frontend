@@ -1,6 +1,8 @@
 let itPreID="I00-00";
 let itNo=1;
 
+let itemDetail = [];
+
 setItemID();
 
 let isUpdateModeItem = false;
