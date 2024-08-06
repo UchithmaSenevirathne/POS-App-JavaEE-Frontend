@@ -130,6 +130,7 @@ function getAllCustomer() {
   //     $("#tblcustomer").append(row);
   //     bindCustomerTrEvents();
   //   }
+  // getCustomers();
 }
 
 function bindCustomerTrEvents() {

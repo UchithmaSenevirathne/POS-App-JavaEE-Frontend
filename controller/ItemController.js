@@ -125,6 +125,7 @@ function getAllItem() {
   //     $('#tblItem').append(itemRow);
   //     bindItemTrEvents();
   // }
+//   getItems();
 }
 
 function bindItemTrEvents() {

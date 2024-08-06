@@ -53,7 +53,6 @@ function cusNames() {
 }
 
 function itemNames() {
-
     var optionItem = '';
     for (var i = 0; i < items.length; i++) {
         optionItem += '<option value="' + items[i].name + '">' + items[i].name + '</option>';
