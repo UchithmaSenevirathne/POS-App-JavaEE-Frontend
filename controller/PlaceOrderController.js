@@ -135,6 +135,11 @@ function renderCartTable() {
     });
 }
 
+window.removeFromCart = function(itemID) {
+    orderDetails = orderDetails.filter(item => item.itemID !== itemID);
+    renderCartTable();
+};
+
 $('#inputCash').keydown(function (event){
 
     if (event.key==='Enter'){
