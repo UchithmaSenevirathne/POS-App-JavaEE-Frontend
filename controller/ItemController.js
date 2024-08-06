@@ -212,7 +212,20 @@ function updateItem() {
 
 }
 
-function deleteItem(itemID, button) {
+function deleteItem(id) {
+    $.ajax({
+        url: `http://localhost:8080/POS_Backend/item?id=${id}`,
+        method: 'DELETE',
+        success: function() {
+            alert('Item deleted successfully');
+            getAllItem();
+            resetForm();
+        },
+        error: function(err) {
+            console.error(err);
+            alert('Failed to delete item');
+        }
+    });
     // let consent=confirm("DO U WANT DELETE THIS ITEM");
 
     // if(consent){
