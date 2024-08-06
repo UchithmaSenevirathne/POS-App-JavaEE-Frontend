@@ -1,5 +1,5 @@
 let itPreID="I00-00";
-let itNo=4;
+let itNo=1;
 
 setItemID();
 
@@ -26,32 +26,32 @@ getAllItem();
 // });
 
 function saveItem() {
-    let iId=$('#itemID').val();
-    let name=$('#itemName').val();
-    let description=$('#description').val();
-    let unitPrice=$('#uPrice').val();
+    // let iId=$('#itemID').val();
+    // let name=$('#itemName').val();
+    // let description=$('#description').val();
+    // let unitPrice=$('#uPrice').val();
 
-    let newItem=Object.assign({},ItemOb);
-    newItem.itemID=iId;
-    newItem.itemName=name;
-    newItem.itemDescription=description;
-    newItem.itemUnitPrice=unitPrice;
+    // let newItem=Object.assign({},ItemOb);
+    // newItem.itemID=iId;
+    // newItem.itemName=name;
+    // newItem.itemDescription=description;
+    // newItem.itemUnitPrice=unitPrice;
 
-    if (true){
-        itemDetails.push(newItem);
-        getAllItem();
-        clearItemFeilds();
+    // if (true){
+    //     itemDetails.push(newItem);
+    //     getAllItem();
+    //     clearItemFeilds();
 
-        itNo++;
-        setItemID();
-        console.log(itNo);
+    //     itNo++;
+    //     setItemID();
+    //     console.log(itNo);
 
-    }else{
-        alert("THIS ITEM ALREADY IN THIS SYSTEM");
-        clearItemFeilds();
-    }
+    // }else{
+    //     alert("THIS ITEM ALREADY IN THIS SYSTEM");
+    //     clearItemFeilds();
+    // }
 
-    itemNames();
+    // itemNames();
 }
 
 function getAllItem() {
