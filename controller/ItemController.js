@@ -208,27 +208,27 @@ function updateItem() {
     //     clearItemFeilds();
     // }
 
-    // setItemID();
+    setItemID();
 
 }
 
 function deleteItem(itemID, button) {
-    let consent=confirm("DO U WANT DELETE THIS ITEM");
+    // let consent=confirm("DO U WANT DELETE THIS ITEM");
 
-    if(consent){
-        for (let i = 0; i < itemDetails.length; i++) {
-            if (itemDetails[i].itemID==itemID){
-                itemDetails.splice(i,1);
-                getAllItem();
-                clearItemFeilds()
+    // if(consent){
+    //     for (let i = 0; i < itemDetails.length; i++) {
+    //         if (itemDetails[i].itemID==itemID){
+    //             itemDetails.splice(i,1);
+    //             getAllItem();
+    //             clearItemFeilds()
     
-                alert("ITEM DELETED SUCCSESS...!");
-                break;
-            }
-        }
-    }else{
-        clearItemFeilds();
-    }
+    //             alert("ITEM DELETED SUCCSESS...!");
+    //             break;
+    //         }
+    //     }
+    // }else{
+    //     clearItemFeilds();
+    // }
 
     setItemID();
     
