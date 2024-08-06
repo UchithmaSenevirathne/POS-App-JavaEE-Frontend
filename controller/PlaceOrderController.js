@@ -104,8 +104,9 @@ function addToCart() {
     };
     
     orderDetails.push(item);
+    console.log("order details", orderDetails);
     renderCartTable();
-    // let subTotal=0;
+    let subTotal=0;
     // let oItemID = $("#selectedItemCode").val();
     // let oItemName = $("#selectedItemName").val();
     // let oItemDesc = $("#selectedItemDes").val();
@@ -145,11 +146,11 @@ function addToCart() {
 
     clearItemDetails();
 
-    // for (let i = 0; i <= orderDetailDb.length; i++) {
-    //     subTotal+=orderDetailDb[i].ITotal;
-    //     $('#inputTotal').val(parseInt(subTotal));
-    //     console.log(parseInt(subTotal));
-    // }
+    for (let i = 0; i <= orderDetails.length; i++) {
+        subTotal+=orderDetails[i].total;
+        $('#inputTotal').val(parseInt(subTotal));
+        console.log(parseInt(subTotal));
+    }
 
 }
 
