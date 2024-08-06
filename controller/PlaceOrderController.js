@@ -281,5 +281,9 @@ function getOrderDetails(){
             console.log("Orders fetched successfully: ", response);
             populateOrderTable(response);
         },
+        error: function(xhr, status, error) {
+            console.error("Failed to fetch orders:", error);
+            alert("Failed to fetch orders. Please try again.");
+        }
     })
 }
