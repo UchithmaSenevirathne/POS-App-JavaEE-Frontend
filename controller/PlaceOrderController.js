@@ -59,24 +59,36 @@ $("#btnAddToCart").click(function () {
 });
 
 function addToCart() {
-    let subTotal=0;
-    let oItemID = $("#selectedItemCode").val();
-    let oItemName = $("#selectedItemName").val();
-    let oItemDesc = $("#selectedItemDes").val();
-    let oItemUnitPrice = $("#selectedItemUP").val();
-    let oItemQty = $("#selectedQty").val();
-    let oTotal = oItemUnitPrice*oItemQty;
 
-    let newCart = Object.assign({}, cartOb);
-    newCart.IID = oItemID;
-    newCart.IName = oItemName;
-    newCart.IDescription = oItemDesc;
-    newCart.IUnitPrice = oItemUnitPrice;
-    newCart.IQty = oItemQty;
-    newCart.ITotal = oTotal;
+    let item = {
+        itemID: $("#selectedItemCode").val(),
+        itemName: $("#selectedItemName").val(),
+        itemDescription: $("#selectedItemDes").val(),
+        unitPrice: $("#selectedItemUP").val(),
+        qty: $("#selectedQty").val(),
+        total: $("#selectedItemUP").val() * $("#selectedQty").val()
+    };
+    
+    orderDetails.push(item);
+    renderCartTable();
+    // let subTotal=0;
+    // let oItemID = $("#selectedItemCode").val();
+    // let oItemName = $("#selectedItemName").val();
+    // let oItemDesc = $("#selectedItemDes").val();
+    // let oItemUnitPrice = $("#selectedItemUP").val();
+    // let oItemQty = $("#selectedQty").val();
+    // let oTotal = oItemUnitPrice*oItemQty;
+
+    // let newCart = Object.assign({}, cartOb);
+    // newCart.IID = oItemID;
+    // newCart.IName = oItemName;
+    // newCart.IDescription = oItemDesc;
+    // newCart.IUnitPrice = oItemUnitPrice;
+    // newCart.IQty = oItemQty;
+    // newCart.ITotal = oTotal;
 
     //add customer record to the customer array
-    orderDetailDb.push(newCart);
+    // orderDetailDb.push(newCart);
 
     // for (let i = 0; i < itemDetails.length; i++) {
     //     if(itemDetails[i].code==oItemID){
@@ -86,24 +98,24 @@ function addToCart() {
 
 
     //create row and add text field values
-    let row=`<tr>
-                    <td>${newCart.IID}</td>
-                    <td>${newCart.IName}</td>
-                    <td>${newCart.IDescription}</td>
-                    <td>${newCart.IUnitPrice}</td>
-                    <td>${newCart.IQty}</td>
-                    <td>${newCart.ITotal}</td>
-                   </tr>`;
-    //and then append the row to tableBody
-    $("#tBodyPlaceOrder").append(row);
+    // let row=`<tr>
+    //                 <td>${newCart.IID}</td>
+    //                 <td>${newCart.IName}</td>
+    //                 <td>${newCart.IDescription}</td>
+    //                 <td>${newCart.IUnitPrice}</td>
+    //                 <td>${newCart.IQty}</td>
+    //                 <td>${newCart.ITotal}</td>
+    //                </tr>`;
+    // //and then append the row to tableBody
+    // $("#tBodyPlaceOrder").append(row);
 
-    clearItemDetails();
+    // clearItemDetails();
 
-    for (let i = 0; i <= orderDetailDb.length; i++) {
-        subTotal+=orderDetailDb[i].ITotal;
-        $('#inputTotal').val(parseInt(subTotal));
-        console.log(parseInt(subTotal));
-    }
+    // for (let i = 0; i <= orderDetailDb.length; i++) {
+    //     subTotal+=orderDetailDb[i].ITotal;
+    //     $('#inputTotal').val(parseInt(subTotal));
+    //     console.log(parseInt(subTotal));
+    // }
 
 }
 
