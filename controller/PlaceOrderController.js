@@ -212,6 +212,7 @@ function purchaseOrder() {
             $("#orderForm")[0].reset();
             orderDetails = [];
             renderCartTable();
+            getOrderDetails();
         },
         error: function(xhr, status, error) {
             console.error("Failed to place order:", error);
@@ -244,7 +245,6 @@ function purchaseOrder() {
     // alert("order Placed Succesfully !");
     // console.log(orderDb);
     clearFields();
-    // getAllOrder();
 }
 
 function clearFields() {
@@ -288,23 +288,24 @@ function getOrderDetails(){
     })
 }
 
-function populateOrderTable(orders){
+function populateOrderTable(orders) {
+    console.log("order details", orders);
     const $tableBody = $('#tblBodyOrders');
     $tableBody.empty(); // Clear the table body
 
     orders.forEach(order => {
-        order.orderDetails.forEach(detail => {
-            const row = `
-                <tr>
-                    <td>${detail.item_id}</td>
-                    <td>${detail.item_name}</td>
-                    <td>${detail.item_desc}</td>
-                    <td>${detail.item_qty}</td>
-                    <td>${detail.item_up}</td>
-                    <td>${detail.total}</td>
-                </tr>
-            `;
-            $tableBody.append(row);
-        });
+        const row = `
+            <tr>
+                <td>${order.itemId}</td>
+                <td>${order.itemName}</td>
+                <td>${order.itemDescription}</td>
+                <td>${order.qty}</td>
+                <td>${order.unitPrice}</td>
+                <td>${order.total}</td>
+            </tr>
+        `;
+        $tableBody.append(row);
+        console.log("***", order.itemId);
     });
 }
+
