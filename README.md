@@ -73,7 +73,7 @@ using JavaEE, and the frontend is developed with HTML, CSS, and JavaScript.</p>
     </li>
 </ol>
 
-<a href="https://documenter.getpostman.com/view/35385637/2sA3s1mqs3"><h1>API Documentation</h1></a>
+<a href="https://documenter.getpostman.com/view/35385637/2sA3s1mqs3">API Documentation</a>
 
 <a href="https://github.com/UchithmaSenevirathne/POS-App-JavaEE-Frontend/blob/main/MIT%20License.md">MIT License</a>
 
