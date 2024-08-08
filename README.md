@@ -85,3 +85,6 @@ using JavaEE, and the frontend is developed with HTML, CSS, and JavaScript.</p>
 
 <a href="https://github.com/UchithmaSenevirathne/POS-App-JavaEE-Frontend/blob/main/MIT%20License.md">MIT License</a>
 
+<hr/>
+
+<p>Copyright - 2024 - Present | Uchithma Senevirathne | All Rights Reserved</p>
