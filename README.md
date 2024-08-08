@@ -42,7 +42,7 @@ using JavaEE, and the frontend is developed with HTML, CSS, and JavaScript.</p>
 <hr/>
 
 <h2>Clone the repository</h2>
-<a href="https://github.com/UchithmaSenevirathne/POS-App-JavaEE-Frontend.git"><p>git clone </P>https://github.com/UchithmaSenevirathne/POS-App-JavaEE-Frontend.git</a></p>
+<p>git clone </P><a href="https://github.com/UchithmaSenevirathne/POS-App-JavaEE-Frontend.git">https://github.com/UchithmaSenevirathne/POS-App-JavaEE-Frontend.git</a></p>
 <hr/>
 
 <h2>Usage</h2>
