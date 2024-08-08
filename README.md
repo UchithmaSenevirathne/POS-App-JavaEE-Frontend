@@ -45,15 +45,6 @@ using JavaEE, and the frontend is developed with HTML, CSS, and JavaScript.</p>
 <p>git clone <a>https://github.com/UchithmaSenevirathne/POS-App-JavaEE-Frontend.git</a></p>
 <hr/>
 
-<h2>Frontend Structure</h2>
-<ul>
-    <li>assets => images, js</li>
-    <li>controller => validation, controller.js</li>
-    <li>css => index.css</li>
-    <li>index.html</li>
-</ul>
-<hr/>
-
 <h2>Usage</h2>
 <ol style="font-weight: bold">
     <li>Customer Management:
